@@ -10,7 +10,7 @@ warnings.filterwarnings('ignore', message='pkg_resources is deprecated')
 
 def main():
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'MediProAPI.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'EduraAPI.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

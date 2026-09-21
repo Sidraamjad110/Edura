@@ -1,16 +1,16 @@
-﻿import os
+import os
 import sys
 
 # Set up Django environment
 sys.path.append('.')
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'MediProAPI.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'EduraAPI.settings')
 
 try:
     import django
     django.setup()
-    print("✓ Django setup complete")
+    print("? Django setup complete")
 except Exception as e:
-    print(f"✗ Django setup failed: {e}")
+    print(f"? Django setup failed: {e}")
     sys.exit(1)
 
 from django.db import connection
@@ -32,23 +32,23 @@ try:
     # Test 2: Try to connect
     print("\n2. Testing connection...")
     connection.ensure_connection()
-    print("   ✓ Connection.ensure_connection() successful")
+    print("   ? Connection.ensure_connection() successful")
     
     # Test 3: Execute a query
     print("\n3. Executing test query...")
     with connection.cursor() as cursor:
         cursor.execute("SELECT 1 as test, DB_NAME() as db, @@VERSION as version")
         row = cursor.fetchone()
-        print(f"   ✓ Query executed successfully")
+        print(f"   ? Query executed successfully")
         print(f"   Test result: {row[0]}")
         print(f"   Database: {row[1]}")
         print(f"   Version: {row[2][:50]}...")
     
     print("\n" + "=" * 50)
-    print("✓ All tests passed! Django can connect to the database.")
+    print("? All tests passed! Django can connect to the database.")
     
 except Exception as e:
-    print(f"\n✗ Error: {e}")
+    print(f"\n? Error: {e}")
     
     # Show more details
     import traceback
